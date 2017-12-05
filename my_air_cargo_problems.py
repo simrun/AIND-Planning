@@ -295,9 +295,9 @@ def air_cargo_p3() -> AirCargoProblem:
 
     # The cargos are not at the other airports
     neg += [expr('At(C1, {})'.format(a)) for a in ['JFK', 'ATL', 'ORD']]
-    neg += [expr('At(C1, {})'.format(a)) for a in ['SFO', 'ATL', 'ORD']]
-    neg += [expr('At(C1, {})'.format(a)) for a in ['SFO', 'JFK', 'ORD']]
-    neg += [expr('At(C1, {})'.format(a)) for a in ['SFO', 'JFK', 'ATL']]
+    neg += [expr('At(C2, {})'.format(a)) for a in ['SFO', 'ATL', 'ORD']]
+    neg += [expr('At(C3, {})'.format(a)) for a in ['SFO', 'JFK', 'ORD']]
+    neg += [expr('At(C4, {})'.format(a)) for a in ['SFO', 'JFK', 'ATL']]
 
     init = FluentState(pos, neg)
 
