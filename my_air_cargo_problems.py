@@ -201,9 +201,14 @@ class AirCargoProblem(Problem):
         conditions by ignoring the preconditions required for an action to be
         executed.
         """
-        # TODO implement (see Russell-Norvig Ed-3 10.2.3  or Russell-Norvig Ed-2 11.2)
-        count = 0
-        return count
+        # In the air cargo problem an action cannot achieve multiple goals.
+        # It follows that  a minimum bound for the number of steps to solve
+        # the relaxed problem is the number of unmet goals.
+
+        goal = set(self.goal)
+        state = set(decode_state(node.state, self.state_map).pos)
+
+        return len(goal - state)
 
 
 def air_cargo_p1() -> AirCargoProblem:
