@@ -489,7 +489,14 @@ class PlanningGraph():
 
         :return: int
         """
+
         level_sum = 0
-        # TODO implement
-        # for each goal in the problem, determine the level cost, then add them together
+        for g in self.problem.goal:
+            gn = PgNode_s(g, True)  # Goal fluents are always positive
+            level_cost = 0
+            for l in self.s_levels:
+                if gn in l:
+                    break
+                level_cost += 1
+            level_sum += level_cost
         return level_sum
